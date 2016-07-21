@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>main</title>
+<style>
+body{
+	font-size:13px;
+	font-family:"DX시인과나";
+}
+#empty{
+	width:100%;
+	height:50px;
+
+}
+#image{
+	width:400px;
+	height:250px;
+	margin:auto;
+	text-align:center;
+}
+#title{
+	width:400px;
+	height:100px;
+	margin:auto;
+	text-align:center;
+
+}
+#bottom{
+	width:400px;
+	height:200px;
+	margin:auto;
+	text-align:center;
+
+}
+table{
+	margin:auto;
+	text-align:right;
+}
+.button{
+	background-color:black;
+	color:white;
+	font-size:9pt;
+	padding: 5px 10px;
+	border-radius: 8px;
+	border:none;
+}
+h{
+	font-size: 22pt;
+	font-family: "DX시인과나";
+}
+</style>
+<script>
+window.addEventListener("load",function(){
+	init();
+
+});
+
+function init(){
+	form2.email_m.focus();
+}
+
+function openpage(){
+	window.open("signup.html","_self");
+}
+
+</script>
+</head>
+<body>
+<form name="form2">
+		<div id="empty"></div>
+		<div id="image">
+			<img src="./images/4.png" width=200px; align=center id="mainimg">
+		</div>
+		<div id="title">
+			<img src="./images/bike.png" width=50px;><h>다방오빠 박까페<br>&nbsp&nbsp오빠가 간다</h>
+		</div>
+		<div id="bottom">
+			<table width=300px height=100px>
+				<tr>
+					<td>Email:&nbsp</td>
+					<td align=left><input type="textbox" size=18 name="email_m"></td>
+				</tr>
+				<tr>
+					<td>Password:&nbsp</td>
+					<td align=left><input type="password" size=18></td>
+				</tr>
+				<br>
+				<tr>
+					<td colspan=2; align=center>
+						<input type="button" class="button" value="SignUp" onClick="openpage()">&nbsp&nbsp
+						<input type="button" class="button" value="SignIn">
+					</td>
+				</tr>
+			</table>
+		</div>
+</form>
+</body>
+</html>
