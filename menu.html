@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>menu</title>
+<script src="./lib/puzzle.js"></script>
+<script>
+var stage;
+
+	window.addEventListener("load",function(){
+
+	stage=document.createElement("div");
+	stage.style.width="800px";
+	stage.style.height="800px";
+	stage.style.margin="auto";
+	stage.style.border="1px solid black"
+
+	document.body.appendChild(stage);
+	
+	createbox();
+});
+
+function createbox(){
+	for(var i=1;i<=64;i++){
+		var p=new Puzzle(stage,100,100,"yellow");
+
+	p.init();
+	} 
+}
+
+
+</script>
+</head>
+<body>
+</body>
+</html>

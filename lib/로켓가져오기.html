@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>우주선움직이기</title>
+<style>
+#stage{
+	width:100%;
+	height:800px;
+}
+</style>
+<script>
+var Ship=function(){
+this.stage;
+this.img;
+
+window.addEventListener("load",function(){
+this.stage=getElementById("stage");})
+
+	this.init=function(){
+	img=document.createElement("img");
+	img.src="../images/rocket.png";
+	img.style.width=200+"px";
+	img.style.heigh=100+"px";
+
+	this.stage.appendChild(this.img);
+
+	}
+
+	this.init();	
+}
+	
+
+
+</script>
+</head>
+<body>
+<div id="stage"></div>
+</body>
+</html>

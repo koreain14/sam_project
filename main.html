@@ -44,6 +44,7 @@ table{
 	padding: 5px 10px;
 	border-radius: 8px;
 	border:none;
+	cursor:pointer;
 }
 h{
 	font-size: 22pt;
@@ -51,17 +52,27 @@ h{
 }
 </style>
 <script>
+var bt;
+
 window.addEventListener("load",function(){
+	bt=document.getElementById("bt");
+
+	bt.addEventListener("click", function(){
+	openpage();
+
+	});
+
 	init();
 
 });
+
 
 function init(){
 	form2.email_m.focus();
 }
 
 function openpage(){
-	window.open("signup.html","_self");
+	window.open("/signup","_self");		
 }
 
 </script>
@@ -83,12 +94,12 @@ function openpage(){
 				</tr>
 				<tr>
 					<td>Password:&nbsp</td>
-					<td align=left><input type="password" size=18></td>
+					<td align=left><input type="password" size=18 name="pwd_m"></td>
 				</tr>
 				<br>
 				<tr>
 					<td colspan=2; align=center>
-						<input type="button" class="button" value="SignUp" onClick="openpage()">&nbsp&nbsp
+						<input type="button" class="button" value="SignUp" id="bt">&nbsp&nbsp
 						<input type="button" class="button" value="SignIn">
 					</td>
 				</tr>
