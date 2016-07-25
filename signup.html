@@ -45,6 +45,7 @@ function init(){
 	form1.name.focus();
 }
 
+
 //회원가입 유효성검사
 function signup(){
 	if(form1.name.value==""){
@@ -67,13 +68,20 @@ function signup(){
 		alert("핸드폰번호를 입력하세요");
 		form1.phone.focus();
 		return;
+	}else{
+	window.open("./signup2","_self");
 	}
+
+	//회원가입 데이터 저장
+
+	form2.action="/signup";
+	form2.submit();
 }
 
 </script>
 </head>
 <body >
-<form name="form1">
+<form name="form1" method="post">
 	<div id="title_s"></div>
 	<div id="top_s" align=center>
 		<img src="./images/4.png" width=200px>

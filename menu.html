@@ -3,34 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <title>menu</title>
-<script src="./lib/puzzle.js"></script>
-<script>
-var stage;
+<style>
+body{
+	font-family:"dx시인과나";
+	font-size: 13px;
+}
+#top{
+	width:400px;
+	height:50px;
+	margin:auto
+}
+#main{
+	width:500px;
+	height:450px;
+	margin:auto;
+	overflow:scroll;
+}
 
-	window.addEventListener("load",function(){
+#main div{
+	margin:20px;
+	float:left;
+}
 
-	stage=document.createElement("div");
-	stage.style.width="800px";
-	stage.style.height="800px";
-	stage.style.margin="auto";
-	stage.style.border="1px solid black"
+#bottom{
+	width:400px;
+	height:50px;
+	margin:auto
+}
+table{
+	margin:auto;
+	width: 380px;
+	Text-align: center;
+}
 
-	document.body.appendChild(stage);
-	
-	createbox();
-});
-
-function createbox(){
-	for(var i=1;i<=64;i++){
-		var p=new Puzzle(stage,100,100,"yellow");
-
-	p.init();
-	} 
+img{
+	width:80px;
+}
+.button{
+	background-color:black;
+	color:white;
+	font-size:9pt;
+	padding: 5px 10px;
+	border-radius: 8px;
+	border:none;
+	cursor:pointer;
 }
 
 
+</style>
+<script src="/lib/lib.js"></script>
+<script>
+var bt;
+window.addEventListener("load", function(){
+	init();	
+});
+
+function init(){
+	bt=document.getElementById("bt");
+	bt.addEventListener("click", function(){
+		order();
+	});
+}
+
+function order(){
+	//폼양식을 통해 날려야 하므로, post 날려야 한다!!
+	form1.action="/order";
+	form1.submit();
+}
 </script>
 </head>
 <body>
+	<div id="top"></div>
+	<form name="form1" method="post">
+	<input type="hidden" name="member_id" value="1">
+	<div id="main">
+		<%for(var i=0;i<dataList.length;i++){%>
+		<%var menu=dataList[i]%>
+		<div>	
+			<img src="/images/<%=menu.img%>" width="100px" height="100px"><br>
+			<input type="checkbox" name="ch" value="<%=menu.menu_id%>">
+		</div>
+
+		<%}%>				
+	</div>
+	</form>
+	<div id="bottom" align="right">
+		<br>
+		<input type="button" class="button" value="주문하기" id="bt">
+	</div>
 </body>
 </html>
