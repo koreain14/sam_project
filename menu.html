@@ -14,7 +14,7 @@ body{
 	margin:auto
 }
 #main{
-	width:500px;
+	width:450px;
 	height:450px;
 	margin:auto;
 	overflow:scroll;
@@ -80,8 +80,9 @@ function order(){
 		<%for(var i=0;i<dataList.length;i++){%>
 		<%var menu=dataList[i]%>
 		<div>	
-			<img src="/images/<%=menu.img%>" width="100px" height="100px"><br>
-			<input type="checkbox" name="ch" value="<%=menu.menu_id%>">
+			<img src="/images/<%=menu.img%>" width="100px" height="90px"><br>
+			<input type="checkbox" name="ch" value="<%=menu.menu_id%>"><%=menu.menu_name%><br>
+			&nbsp&nbsp&nbsp&nbsp<%=menu.price%>원
 		</div>
 
 		<%}%>				
