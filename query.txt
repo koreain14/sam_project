@@ -1,0 +1,13 @@
+create table member2(
+member_id int primary key auto_increment
+,name varchar(20)
+,email varchar(50)
+,pwd1 int(20)
+,pwd2 int(20)
+,phone int(11)
+,zipcode int(5)
+,addr1 varchar(50)
+,addr2 varchar(50)
+,point int default 0
+,regdate timestamp default now()
+)default charset utf8;

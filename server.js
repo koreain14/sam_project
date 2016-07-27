@@ -30,8 +30,6 @@ app.route('/').get(function(request,response){
 	response.end(data);
 });
 
-
-
 app.route("/signup").get(function(req,res){
 	var data=fs.readFileSync("./signup.html","utf8");
 	res.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
@@ -44,8 +42,22 @@ app.route("/signup").get(function(req,res){
 app.route("/signup/write").post(function(request, response){
 	console.log(request.body);
 
-	var sql="insert into member(name,email,pwd,addr)";
-	sql=sql+" values('"+request.body.name+"','"+request.body.email+"','"+request.body.pwd1+"','"+request.body.addr1+"')";
+	var name=request.body.name;
+	var email=request.body.email;
+	var pwd1=request.body.pwd1;
+	var pwd2=request.body.pwd2;
+	var phone=request.body.phone;
+	var zipcode=request.body.zipcode;
+	var addr1=request.body.addr1;
+	var addr2=request.body.addr2;
+
+
+
+	var sql="insert into member2(name,email,pwd1,pwd2,phone,zipcode,addr1,addr2)";
+	
+	sql=sql+" values('"+name+"','"+email+"','"+pwd1+"','"+pwd2+"','"
+								+phone+"','"+zipcode+"','"+addr1+"','"+addr2+"')";
+
 	console.log(sql);
 
 	client.query(sql,function(error,records){
@@ -59,17 +71,31 @@ app.route("/signup/write").post(function(request, response){
 			response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
 			var content=fs.readFileSync("./error.html","utf8"); // 지정한 파일 읽어서 변수로 담아 놓자!!
 			response.end(content);
-
 		}
-		
 	});
-
 });
 
-app.route("/signup2").get(function(request,response){
+/*app.route("/signup2").get(function(request,response){
 	var data=fs.readFileSync("./signup2.html","utf8");
 	res.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
 	res.end(data);
+});*/
+
+/*---------------------------------------------------------------------------------------
+오더보기 요청 처리!!
+---------------------------------------------------------------------------------------*/
+app.route("/orderlist").get(function(request,response){
+	var data=fs.readFileSync("./orderlist.html","utf8");
+	
+	client.query("select * from orderlist", function(error, records){
+		if(!error){
+			console.log(records);	
+			response.writeHead(200, {"Content-Type":"text/html;charset=utf-8"});	
+			response.end(ejs.render(data,{dataList:records}));//클라이언트에게 응답을 하는 시점!!	
+		}else{
+			console.log("망햇어요ㅜㅜ");
+		}
+	});
 });
 
 
@@ -109,12 +135,12 @@ app.route("/order").post(function(request, response){
 		
 		console.log(sql);
 
-		client.query(sql , function(error, records, field){
+		client.query(sql, function(error, records, field){
 			if(error){
 				console.log("등록 실패입니다.");
 			}else{
 				console.log("등록 성공입니다.");
-				response.redirect("/list");
+				response.redirect("/orderlist");
 			}
 		});
 	}

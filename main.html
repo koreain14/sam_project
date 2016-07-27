@@ -11,7 +11,6 @@ body{
 #empty{
 	width:100%;
 	height:50px;
-
 }
 #image{
 	width:400px;
@@ -24,14 +23,12 @@ body{
 	height:100px;
 	margin:auto;
 	text-align:center;
-
 }
 #bottom{
 	width:400px;
 	height:200px;
 	margin:auto;
 	text-align:center;
-
 }
 table{
 	margin:auto;
@@ -53,20 +50,13 @@ h{
 </style>
 <script>
 var bt;
-
 window.addEventListener("load",function(){
-	bt=document.getElementById("bt");
+		init();
 	});
-
-	init();
-
-});
-
 
 function init(){
 	form2.email_m.focus();
 }
-
 </script>
 </head>
 <body>
@@ -91,7 +81,7 @@ function init(){
 				<br>
 				<tr>
 					<td colspan=2; align=center>
-						<input type="button" class="button" value="SignUp" id="bt">&nbsp&nbsp
+						<a href="/signup"><input type="button" class="button" value="SignUp" id="bt"></a>&nbsp&nbsp
 						<input type="button" class="button" value="SignIn">
 					</td>
 				</tr>

@@ -79,12 +79,11 @@ function order(){
 	<div id="main">
 		<%for(var i=0;i<dataList.length;i++){%>
 		<%var menu=dataList[i]%>
-		<div>	
-			<img src="/images/<%=menu.img%>" width="100px" height="90px"><br>
-			<input type="checkbox" name="ch" value="<%=menu.menu_id%>"><%=menu.menu_name%><br>
-			&nbsp&nbsp&nbsp&nbsp<%=menu.price%>원
-		</div>
-
+			<div>	
+				<img src="/images/<%=menu.img%>" width="100px" height="90px"><br>
+				<input type="checkbox" name="ch" value="<%=menu.menu_id%>"><%=menu.menu_name%><br>
+				&nbsp&nbsp&nbsp&nbsp<%=menu.price%>원
+			</div>
 		<%}%>				
 	</div>
 	</form>
