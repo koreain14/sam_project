@@ -42,13 +42,13 @@ window.addEventListener("load",function(){
 });
 
 function init(){
-	form1.name.focus();
+	form2.name.focus();
 }
 
 
 //회원가입 유효성검사
 function signup(){
-	/*if(form2.name.value==""){
+	if(form2.name.value==""){
 		alert("이름을 입력하세요");
 		form2.name.focus();
 		return;
@@ -60,7 +60,7 @@ function signup(){
 		alert("비밀번호를 입력하세요");
 		form2.pwd1.focus();
 		return;
-	}if(form2.pwd1.value!==form1.pwd2.value){
+	}if(form2.pwd1.value!==form2.pwd2.value){
 		alert("비밀번호가 일치하지 않습니다.");
 		form2.pwd2.focus();
 		return;
@@ -68,7 +68,7 @@ function signup(){
 		alert("핸드폰번호를 입력하세요");
 		form2.phone.focus();
 		return;
-	}*/
+	}
 		form2.action="/signup/write";
 		form2.submit();
 }

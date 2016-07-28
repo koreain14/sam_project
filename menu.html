@@ -82,7 +82,7 @@ function order(){
 			<div>	
 				<img src="/images/<%=menu.img%>" width="100px" height="90px"><br>
 				<input type="checkbox" name="ch" value="<%=menu.menu_id%>"><%=menu.menu_name%><br>
-				&nbsp&nbsp&nbsp&nbsp<%=menu.price%>원
+				&nbsp&nbsp&nbsp&nbsp<span name="span_price"><%=menu.price%></span>원
 			</div>
 		<%}%>				
 	</div>

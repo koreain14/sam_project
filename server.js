@@ -51,8 +51,6 @@ app.route("/signup/write").post(function(request, response){
 	var addr1=request.body.addr1;
 	var addr2=request.body.addr2;
 
-
-
 	var sql="insert into member2(name,email,pwd1,pwd2,phone,zipcode,addr1,addr2)";
 	
 	sql=sql+" values('"+name+"','"+email+"','"+pwd1+"','"+pwd2+"','"
@@ -87,7 +85,9 @@ app.route("/signup/write").post(function(request, response){
 app.route("/orderlist").get(function(request,response){
 	var data=fs.readFileSync("./orderlist.html","utf8");
 	
-	client.query("select * from orderlist", function(error, records){
+	var sql="select m.menu_id as menu_id , menu_name, m.price as price from menu m, orderlist o where m.menu_id = o.menu_id";
+
+	client.query(sql , function(error, records){
 		if(!error){
 			console.log(records);	
 			response.writeHead(200, {"Content-Type":"text/html;charset=utf-8"});	
@@ -97,7 +97,6 @@ app.route("/orderlist").get(function(request,response){
 		}
 	});
 });
-
 
 /*---------------------------------------------------------------------------------------
 메뉴보기 요청 처리!!
@@ -125,7 +124,12 @@ app.route("/order").post(function(request, response){
 	var params=request.body.ch;
 
 	//var ch=data.ch;
-	var member_id=request.body.member_id;	
+	var member_id=request.body.member_id;
+	var name=request.body.ch1;
+	var price=request.body.ch2;
+
+	console.log(name);
+
 	console.log("넘겨받은 ch 의 배열의 길이는  "+params.length);
 	
 	for(var i=0;i<params.length;i++){
