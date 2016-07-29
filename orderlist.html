@@ -14,10 +14,9 @@ body{
 
 }
 #main{
-	width:450px;
+	width:400px;
 	height:400px;
 	margin:auto;
-	border:1px solid black;
 }
 #bottom{
 	width:400px;
@@ -25,41 +24,55 @@ body{
 	margin:auto;
 	text-align: right;
 }
-table{
+.button{
+	background-color:black;
+	color:white;
+	font-size:9pt;
+	padding: 5px 10px;
+	border-radius: 8px;
+	border:none;
+	cursor:pointer;
+}
+#tt{
+    font-size:15px;
+	font-weight:bold;
 
 }
 </style>
 <script>
-	
+function thanks(){
+	form1.action="/thanks"
+	form1.submit();
+}
 </script>
 </head>
 <body>
 	<div id="top"></div>
 	<div id="main">
 			<div>	
-				<table width="100%" border="1px">
+				<table width="100%" border="0px">
 					<tr >
-						<td colspan="2" align="center"><%=1+"번 고객님의 주문내역"%></td>
+						<td colspan="2" align="center" id="tt"><%=1+"번 고객님의 주문내역"%></td>
 					</tr>
 					<tr align="center">
-						<td>메뉴명</td>
-						<td>가격</td>
+						<td bgcolor="#f3f3f3">메뉴명</td>
+						<td bgcolor="#e3e3e3">가격</td>
 					</tr>
 					<%for(var i=0;i<dataList.length;i++){%>
 					<%var orderlist=dataList[i]%>
 					<tr>
-						<td><%=orderlist.menu_name%></td>
-						<td align="right"><%=orderlist.price%>&nbsp원</td>
+						<td bgcolor="#e3e3e3"><%=orderlist.menu_name%></td>
+						<td align="right" bgcolor="#f3f3f3"><%=orderlist.price%>&nbsp원</td>
 					</tr>
 					<%}%>
 					<tr>
-						<td colspan="2" align="right">
+						<td colspan="2" align="right" bgcolor="#eeeeee" >
 							<%var sum=0;%>
 							<%for(var i=0;i<dataList.length;i++){%>
 								<%var orderlist=dataList[i]%>
 								<%sum=sum+orderlist.price%>
 							<%}%>
-							합계:&nbsp<%=sum%>&nbsp원
+							합계:&nbsp<input type="text" size="5px" value="<%=sum%>" align="right">&nbsp원
 						</td>
 					</tr>
 				</table>
@@ -67,22 +80,27 @@ table{
 	</div>
 	<div id="bottom">
 		<br>
+		<form name="form1">
 		<table width=400px >
 			<tr>
 				<td align="right">우편번호:&nbsp</td>
-				<td align="left"><input type="text" size=4 name="zipcode"> <img src="./images/search.png" width="15px"></td>
+				<td align="left"><input type="text" size=4 name="zipcode" value="15644"> <img src="./images/search.png" width="15px"></td>
 			</tr>
 			<tr >
 				<td align="right">주소:&nbsp</td>
-				<td align="left"><input type="text" size=30 name="addr1"></td>
+				<td align="left"><input type="text" size=30 name="addr1" value="경기도 용인시 기흥구 중동"></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td align="left"><input type="text" size=30 name="addr2"></td>
+				<td align="left"><input type="text" size=30 name="addr2" value="서희삼정아파트"></td>
 			</tr>			
 		</table>
+		</form>
 		<br>
 			가입된 주소와 동일 <input type="checkbox">&nbsp&nbsp&nbsp
+		<br>
+		<br>
+			<input type="button" class="button" value="확인" onClick="thanks()" >
 	</div>
 </body>
 </html>

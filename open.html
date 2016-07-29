@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+#stage{
+	width:800px;
+	height:600px;
+	margin:auto;
+}
+
+</style>
+<script>
+var stage;
+var img;
+var x=1200;
+var a=0.9;
+
+window.addEventListener("load",function(){
+	init();	
+});
+
+function init(){
+
+	stage=document.getElementById("stage");
+	img=document.createElement("img");
+	
+	img.src="./images/bike.png";
+	img.style.position="absolute";
+	img.style.left=x+"px";
+	img.style.top=300+"px";
+	img.style.width="100px";
+	img.style.height="100px";
+	stage.appendChild(img);
+
+	move();
+}
+function move(){
+	//x-=10;
+	//img.style.left=x+"px";
+
+	
+	if(img.style.left>=-400+"px"){
+	img.style.left=-400-a*(-400 - parseInt(img.style.left))+"px";
+	setTimeout("move()",50);
+	}else{
+		openMain()
+	}
+	console.log(img.style.left);
+	
+}
+
+function openMain(){
+	window.open("/main","_self");
+}
+
+</script>
+</head>
+<body>
+<div id="stage"></div>
+</body>
+</html>

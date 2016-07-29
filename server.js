@@ -20,11 +20,20 @@ var client=mysql.createConnection({
 });
 
 client.query("use project1"); //사용할 db 선택!!
+/*---------------------------------------------------------------------------------------
+/ 첫화면 불러오기
+---------------------------------------------------------------------------------------*/
+app.route("/").get(function(requesti,response){
+	var bike=fs.readFileSync("./open.html","utf8");
+	response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
+	response.end(bike);
+});
+
 
 /*---------------------------------------------------------------------------------------
- 첫 화면 불러오기!!
+ 메인화면 불러오기!!
 ---------------------------------------------------------------------------------------*/
-app.route('/').get(function(request,response){
+app.route('/main').get(function(request,response){
 	var data=fs.readFileSync("./main.html","utf8");
 	response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
 	response.end(data);
@@ -149,6 +158,16 @@ app.route("/order").post(function(request, response){
 		});
 	}
 });
+
+/*---------------------------------------------------------------------------------------
+/thanks 주문확인 페이지!!
+---------------------------------------------------------------------------------------*/
+app.route('/thanks').get(function(request,response){
+	var data=fs.readFileSync("./thanks.html","utf8");
+	response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
+	response.end(data);
+});
+
 
 
 app.listen(9996,function(){
